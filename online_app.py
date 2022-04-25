@@ -118,7 +118,7 @@ if __name__ == '__main__':
         classes = f.read().rstrip('\n').split('\n')
 
     # Give the weight files to the model and load the network using       them.
-    modelWeights = "kaggle_m_10epo.onnx"
+    modelWeights = "colab_s_10epochs.onnx"
     net = cv2.dnn.readNet(modelWeights)
 
     # For faster inference use gpu.
