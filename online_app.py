@@ -103,8 +103,8 @@ def post_process(input_image, outputs):
         draw_label(input_image, label, left, top)
         # text to speech
         myobj = gTTS(text=classes[class_id], lang='en', slow=False)
-        myobj.save("welcome.mp3")
-        audio_file = open('welcome.mp3', 'rb')
+        myobj.save("detected_currency.mp3")
+        audio_file = open('detected_currency.mp3', 'rb')
         audio_bytes = audio_file.read()
         st.audio(audio_bytes, format='audio/ogg', start_time=0)
     return input_image
@@ -123,7 +123,7 @@ if __name__ == '__main__':
 
     # For faster inference use gpu.
     # net.setPreferableBackend(cv2.dnn.DNN_BACKEND_DEFAULT)
-    net.setPreferableTarget(cv2.dnn.DNN_TARGET_OPENCL)
+    # net.setPreferableTarget(cv2.dnn.DNN_TARGET_OPENCL)
 
     st.title("Egyptian Currency Detection")
     st.sidebar.title("What to do")
