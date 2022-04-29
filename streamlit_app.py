@@ -23,7 +23,7 @@ def download_data():
     # print("I am here.")
     
     if not os.path.exists(WEIGHTS):
-        decoder_url = 'wget -O ./best_overall.pt https://www.dropbox.com/s/cf2ox65vi7c2fou/Flickr30k_Decoder_10.pth.tar?dl=0'
+        decoder_url = 'wget -O ./best_overall.pt https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing'
         
         with st.spinner('done!\nmodel weights were not found, downloading them...'):
             os.system(decoder_url)
