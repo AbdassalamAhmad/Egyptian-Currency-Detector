@@ -4,7 +4,7 @@ import streamlit as st
 import os
 #from gtts import gTTS
 
-from YOLOR import *
+#from YOLOR import *
 
 PATH = "test_images"
 
@@ -32,8 +32,8 @@ def download_data():
 
 if __name__ == '__main__':
     # Load class names.
-    names =load_classes(NAMES)
-    print (names)
+    #names =load_classes(NAMES)
+    #print (names)
    
     st.title("Egyptian Currency Detection")
     st.sidebar.title("What to do")
@@ -56,4 +56,4 @@ if __name__ == '__main__':
         # Download the model (.pt) weights from Gdrive using wget
         download_data()
         # Use YOLOR to detect and show img.
-        detect(SOURCE, names)
+        #detect(SOURCE, names)
