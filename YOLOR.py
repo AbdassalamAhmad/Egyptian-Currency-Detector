@@ -51,6 +51,7 @@ def detect(source = SOURCE, names = NAMES):
     model = Darknet(cfg, imgsz)
     print ("helllo",weights)
     print ("helllgggggggo",weights[0])
+    st.write("helllgggggggo",weights[0])
     model.load_state_dict(torch.load(weights[0], map_location=device)['model'])
     # model = attempt_load(weights, map_location=device)  # load FP32 model
     # imgsz = check_img_size(imgsz, s=model.stride.max())  # check img_size
