@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import streamlit as st
 import os
-from gtts import gTTS
+#from gtts import gTTS
 
 from YOLOR import *
 
@@ -14,7 +14,7 @@ PATH = "test_images"
 @st.cache
 def download_data():
     
-    #path1 = './best_overall.pt'
+    path1 = './best_overall.pt'
 
     
     # Local
@@ -22,7 +22,7 @@ def download_data():
     # path2 = './data/resnet50_captioning.pt'
     # print("I am here.")
     
-    if not os.path.exists(WEIGHTS):
+    if not os.path.exists(path1):
         decoder_url = 'wget -O ./best_overall.pt https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing'
         
         with st.spinner('done!\nmodel weights were not found, downloading them...'):

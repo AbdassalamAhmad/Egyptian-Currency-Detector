@@ -1,6 +1,6 @@
 import time
 from pathlib import Path
-
+import streamlit as st
 import cv2
 import torch
 from numpy import random
@@ -20,12 +20,12 @@ SOURCE = '/content/100.jpg' # file or folder to detect objects in it.
 IMG_SIZE = 640 # inference size (pixels)
 CONF_THRES = 0.4 # object confidence threshold
 IOU_THRES = 0.5 # IOU threshold for NMS (boxes near each other)
-DEVICE = '0' # cuda device, i.e. 0 or 0,1,2,3 or cpu
+DEVICE = 'cpu' # cuda device, i.e. 0 or 0,1,2,3 or cpu
 VIEW_IMG = True # display results (yes or no)
 CLASSES = None # filter by class: --class 0, or --class 0 2 3
 AGNOSTIC_NMS = False # class-agnostic NMS
 AUGMENT = False # augmented inference
-CFG = '/content/yolor_p6_custom.cfg' # *.cfg path
+CFG = './yolor_p6_custom.cfg' # *.cfg path
 NAMES = './currency.names' # *.names path (object class names of your custom dataset)
 
 
@@ -38,7 +38,7 @@ def load_classes(path):
     return list(filter(None, names))
 
 
-def detect(source = SOURCE, names):
+def detect(source = SOURCE, names = NAMES):
     weights, view_img, imgsz, cfg = \
         WEIGHTS, VIEW_IMG, IMG_SIZE, CFG
 
@@ -48,7 +48,7 @@ def detect(source = SOURCE, names):
     half = device.type != 'cpu'  # half precision only supported on CUDA
 
     # Load model
-    model = Darknet(cfg, imgsz).cuda()
+    model = Darknet(cfg, imgsz)
     model.load_state_dict(torch.load(weights[0], map_location=device)['model'])
     # model = attempt_load(weights, map_location=device)  # load FP32 model
     # imgsz = check_img_size(imgsz, s=model.stride.max())  # check img_size
