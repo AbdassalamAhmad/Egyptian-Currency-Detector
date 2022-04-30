@@ -3,7 +3,7 @@ import streamlit as st
 from utils.torch_utils import select_device
 import os
 from models.models import *
-
+import wget
 
 @st.cache
 def download_data():
@@ -44,6 +44,8 @@ if __name__ == '__main__':
 
     from IPython.display import FileLink
     st.write(FileLink(r'./best_overall.pt'))
+    x=FileLink(r'./best_overall.pt')
+    file_name = wget.download(x)
     # Load model
     #model = Darknet('./yolor_p6_custom.cfg', 640)
     #model = Darknet(cfg, imgsz).cuda()
