@@ -83,7 +83,7 @@ if __name__ == '__main__':
     with open('model/best_overall.pt') as f:
         lines = f.readlines()
         st.write(lines)
-
+    st.write(os.listdir("./"))
     # Load model
     #model = Darknet('./yolor_p6_custom.cfg', 640)
     #model = Darknet(cfg, imgsz).cuda()
