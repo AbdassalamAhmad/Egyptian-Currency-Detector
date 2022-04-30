@@ -3,7 +3,7 @@ import streamlit as st
 from utils.torch_utils import select_device
 import os
 from models.models import *
-import wget
+
 
 
 def download_data():
@@ -16,7 +16,7 @@ def download_data():
     # print("I am here.")
     
     
-    decoder_url = 'wget -O ./best_overall.pt https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing'
+    decoder_url = 'wget -O three_classes_dataset.zip https://drive.google.com/file/d/1f7b-hbT9R3TuxcBBfohpKh3jb_NpBRWF/view?usp=sharing'
     
     with st.spinner('done!\nmodel weights were not found, downloading them...'):
         os.system(decoder_url)
@@ -34,9 +34,9 @@ if __name__ == '__main__':
     download_data()
 
     # get the size of file
-    size = os.path.getsize('./best_overall.pt') 
+    size = os.path.getsize('./three_classes_dataset.zip') 
     st.write('Size of file is', size, 'bytes')
-    with open('./best_overall.pt') as f:
+    with open('./three_classes_dataset.zip') as f:
         lines = f.readlines()
         st.write(lines)
 
