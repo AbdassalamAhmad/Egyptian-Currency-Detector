@@ -33,7 +33,7 @@ if __name__ == '__main__':
     device = select_device('cpu')
 
 
-
+    download_data()
     # Load model
     model = Darknet('./yolor_p6_custom.cfg', 640)
     #model = Darknet(cfg, imgsz).cuda()
