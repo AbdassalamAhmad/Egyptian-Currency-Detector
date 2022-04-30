@@ -37,7 +37,23 @@ def save_response_content(response, destination):
                 f.write(chunk)
 
 
+def download_data():
+    
+    path1 = 'trythis/best_overall.pt'
 
+    
+    # Local
+    # path1 = './data/LastModelResnet50_v2_16.pth.tar'
+    # path2 = './data/resnet50_captioning.pt'
+    # print("I am here.")
+    
+    if not os.path.exists(path1):
+        #decoder_url = 'wget -O ./best_overall.pt https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing'
+        decoder_url = "wget --load-cookies /tmp/cookies.txt 'https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe' -O model/best.pt"
+        with st.spinner('done!\nmodel weights were not found, downloading them...'):
+            os.system(decoder_url)
+    else:
+        print("Model [best_overall] is here.")
 
 
 if __name__ == '__main__':
@@ -47,17 +63,14 @@ if __name__ == '__main__':
     device = select_device('cpu')
 
 
-    file_id = '100_DOjr6dzKaYtcSCOYOUVstKOLSepKe'
-    destination = 'model/best_overall.pt'
-    download_file_from_google_drive(file_id, destination)
-
+    download_data()
     # get the size of file
-    size = os.path.getsize('model/best_overall.pt') 
+    size = os.path.getsize('trythis/best_overall.pt') 
     st.write('Size of file is', size, 'bytes')
-    with open('model/best_overall.pt') as f:
+    with open('trythis/best_overall.pt') as f:
         lines = f.readlines()
         st.write(lines)
-    st.write(os.listdir("./model"))
+    st.write(os.listdir("./"))
     # Load model
     #model = Darknet('./yolor_p6_custom.cfg', 640)
     #model = Darknet(cfg, imgsz).cuda()
