@@ -49,7 +49,7 @@ def download_data():
     
     if not os.path.exists(path1):
         #decoder_url = 'wget -O ./best_overall.pt https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing'
-        decoder_url = "wget --load-cookies /tmp/cookies.txt 'https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe' -O model/best.pt"
+        decoder_url = "wget --load-cookies /tmp/cookies.txt 'https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe' -O trythis/best_overall.pt"
         with st.spinner('done!\nmodel weights were not found, downloading them...'):
             os.system(decoder_url)
     else:
