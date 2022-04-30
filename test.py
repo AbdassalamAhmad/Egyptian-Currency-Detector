@@ -64,7 +64,7 @@ def load_model():
             
             download_file_from_google_drive('https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing', f_checkpoint)
     
-    model = torch.load(f_checkpoint, map_location=device)
+    #model = torch.load(f_checkpoint, map_location=device)
 
 
 
