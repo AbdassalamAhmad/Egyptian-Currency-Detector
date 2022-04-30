@@ -67,11 +67,11 @@ if __name__ == '__main__':
     gdown.download(url, output, quiet=False)
     #download_data()
     # get the size of file
-    #size = os.path.getsize('trythis/best_overall.pt') 
-    #st.write('Size of file is', size, 'bytes')
-    #with open('trythis/best_overall.pt') as f:
-        #lines = f.readlines()
-        #st.write(lines)
+    size = os.path.getsize('best_overall.pt') 
+    st.write('Size of file is', size, 'bytes')
+    with open('best_overall.pt') as f:
+        lines = f.readlines()
+        st.write(lines)
     st.write(os.listdir("./"))
     # Load model
     #model = Darknet('./yolor_p6_custom.cfg', 640)
