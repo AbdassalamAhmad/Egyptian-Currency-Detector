@@ -40,9 +40,6 @@ if __name__ == '__main__':
         lines = f.readlines()
         st.write(lines)
 
-    from IPython.display import FileLink
-    st.write(FileLink(r'./best_overall.pt'))
-    file_name = wget.download('https://apps.streamlitusercontent.com/abdassalamahmad/egyptian-currency-detector/main/test.py/+/best_overall.pt')
     # Load model
     #model = Darknet('./yolor_p6_custom.cfg', 640)
     #model = Darknet(cfg, imgsz).cuda()
