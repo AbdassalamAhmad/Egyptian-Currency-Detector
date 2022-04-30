@@ -42,13 +42,8 @@ if __name__ == '__main__':
         lines = f.readlines()
         st.write(lines)
 
-    import requests
-
-
-    url = './best_overall.pt'
-    r = requests.get(url, allow_redirects=True)
-
-    open('facebook.ico', 'wb').write(r.content)
+    from IPython.display import FileLink
+    st.write(FileLink(r'./best_overall.pt'))
     # Load model
     #model = Darknet('./yolor_p6_custom.cfg', 640)
     #model = Darknet(cfg, imgsz).cuda()
