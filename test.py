@@ -3,6 +3,7 @@ import streamlit as st
 from utils.torch_utils import select_device
 import os
 from models.models import *
+from pathlib import Path
 #taken from this StackOverflow answer: https://stackoverflow.com/a/39225039
 import requests
 
@@ -75,7 +76,7 @@ if __name__ == '__main__':
     device = select_device('cpu')
 
 
-    load_model()
+    download_file_from_google_drive('100_DOjr6dzKaYtcSCOYOUVstKOLSepKe', 'model/best_overall.pt')
 
     # get the size of file
     size = os.path.getsize('model/best_overall.pt') 
