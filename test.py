@@ -5,10 +5,9 @@ import os
 from models.models import *
 import wget
 
-@st.cache
+
 def download_data():
     
-    path1 = './best_overall.pt'
 
     
     # Local
@@ -16,13 +15,12 @@ def download_data():
     # path2 = './data/resnet50_captioning.pt'
     # print("I am here.")
     
-    if not os.path.exists(path1):
-        decoder_url = 'wget -O ./best_overall.pt https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing'
-        
-        with st.spinner('done!\nmodel weights were not found, downloading them...'):
-            os.system(decoder_url)
-    else:
-        print("Model [best_overall] is here.")
+    
+    decoder_url = 'wget -O ./best_overall.pt https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing'
+    
+    with st.spinner('done!\nmodel weights were not found, downloading them...'):
+        os.system(decoder_url)
+
 
 
 
