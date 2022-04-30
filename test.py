@@ -63,7 +63,7 @@ if __name__ == '__main__':
     device = select_device('cpu')
     import gdown
     url = "https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing"
-    output = "trythis/best_overall.pt"
+    output = "best_overall.pt"
     gdown.download(url, output, quiet=False)
     #download_data()
     # get the size of file
