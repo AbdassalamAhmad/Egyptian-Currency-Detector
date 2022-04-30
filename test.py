@@ -34,6 +34,10 @@ if __name__ == '__main__':
 
 
     download_data()
+
+    # get the size of file
+    size = os.path.getsize('./best_overall.pt') 
+    print('Size of file is', size, 'bytes')
     # Load model
     model = Darknet('./yolor_p6_custom.cfg', 640)
     #model = Darknet(cfg, imgsz).cuda()
