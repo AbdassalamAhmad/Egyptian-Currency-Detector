@@ -7,23 +7,6 @@ from pathlib import Path
 #taken from this StackOverflow answer: https://stackoverflow.com/a/39225039
 import requests
 
- 
-
-def get_confirm_token(response):
-    for key, value in response.cookies.items():
-        if key.startswith('download_warning'):
-            return value
-
-    return None
-
-def save_response_content(response, destination):
-    #CHUNK_SIZE = 32768
-    CHUNK_SIZE = 327680000
-    with open(destination, "wb") as f:
-        for chunk in response.iter_content(CHUNK_SIZE):
-            if chunk: # filter out keep-alive new chunks
-                f.write(chunk)
-
 def download_file_from_google_drive(id, destination):
     URL = "https://docs.google.com/uc?export=download"
 
@@ -36,36 +19,24 @@ def download_file_from_google_drive(id, destination):
         params = { 'id' : id, 'confirm' : token }
         response = session.get(URL, params = params, stream = True)
 
-    save_response_content(response, destination)   
-# def download_data():
-    
+    save_response_content(response, destination)    
 
-    
-#     # Local
-#     # path1 = './data/LastModelResnet50_v2_16.pth.tar'
-#     # path2 = './data/resnet50_captioning.pt'
-#     # print("I am here.")
-    
-    
-#     decoder_url = 'wget -O ./best_overall.pt https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing'
-    
-#     with st.spinner('done!\nmodel weights were not found, downloading them...'):
-#         os.system(decoder_url)
+def get_confirm_token(response):
+    for key, value in response.cookies.items():
+        if key.startswith('download_warning'):
+            return value
 
-#@st.cache
-def load_model():
+    return None
 
-    save_dest = Path('model')
-    save_dest.mkdir(exist_ok=True)
-    
-    f_checkpoint = Path("model/best_overall.pt")
+def save_response_content(response, destination):
+    CHUNK_SIZE = 32768
 
-    if not f_checkpoint.exists():
-        with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
-            
-            download_file_from_google_drive('https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing', f_checkpoint)
-    
-    #model = torch.load(f_checkpoint, map_location=device)
+    with open(destination, "wb") as f:
+        for chunk in response.iter_content(CHUNK_SIZE):
+            if chunk: # filter out keep-alive new chunks
+                f.write(chunk)
+
+
 
 
 
@@ -76,7 +47,9 @@ if __name__ == '__main__':
     device = select_device('cpu')
 
 
-    download_file_from_google_drive('100_DOjr6dzKaYtcSCOYOUVstKOLSepKe', 'model/best_overall.pt')
+    file_id = '100_DOjr6dzKaYtcSCOYOUVstKOLSepKe'
+    destination = 'model/best_overall.pt'
+    download_file_from_google_drive(file_id, destination)
 
     # get the size of file
     size = os.path.getsize('model/best_overall.pt') 
