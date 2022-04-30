@@ -41,8 +41,16 @@ if __name__ == '__main__':
     with open('./best_overall.pt') as f:
         lines = f.readlines()
         st.write(lines)
+
+    import requests
+
+
+    url = './best_overall.pt'
+    r = requests.get(url, allow_redirects=True)
+
+    open('facebook.ico', 'wb').write(r.content)
     # Load model
-    model = Darknet('./yolor_p6_custom.cfg', 640)
+    #model = Darknet('./yolor_p6_custom.cfg', 640)
     #model = Darknet(cfg, imgsz).cuda()
 
-    model.load_state_dict(torch.load('./best_overall.pt', map_location=device)['model'])
+    #model.load_state_dict(torch.load('./best_overall.pt', map_location=device)['model'])
