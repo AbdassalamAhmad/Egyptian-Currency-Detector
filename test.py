@@ -1,9 +1,9 @@
 #import torch
 import streamlit as st
-from utils.torch_utils import select_device
+#from utils.torch_utils import select_device
 import os
-from models.models import *
-from pathlib import Path
+#from models.models import *
+#from pathlib import Path
 #taken from this StackOverflow answer: https://stackoverflow.com/a/39225039
 import requests
 
@@ -49,7 +49,9 @@ def download_data():
     
     if not os.path.exists(path1):
         #decoder_url = 'wget -O ./best_overall.pt https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing'
-        decoder_url = '''wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=sharing' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=sharing" -O trythis/best_overall.pt && rm -rf /tmp/cookies.txt'''
+        #decoder_url = '''wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=sharing' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=sharing" -O trythis/best_overall.pt && rm -rf /tmp/cookies.txt'''
+        decoder_url = "wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe' -r -A 'uc*' -e robots=off -nd"
+
         with st.spinner('done!\nmodel weights were not found, downloading them...'):
             os.system(decoder_url)
     else:
@@ -60,12 +62,12 @@ if __name__ == '__main__':
     st.title("Egyptian Currency Detection")
     
 
-    device = select_device('cpu')
-    import gdown
-    url = "https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing"
-    output = "best_overall.pt"
-    gdown.download(url, output, quiet=False)
-    #download_data()
+    #device = select_device('cpu')
+    #import gdown
+    #url = "https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing"
+    #output = "best_overall.pt"
+    #gdown.download(url, output, quiet=False)
+    download_data()
     # get the size of file
     size = os.path.getsize('best_overall.pt') 
     st.write('Size of file is', size, 'bytes')
