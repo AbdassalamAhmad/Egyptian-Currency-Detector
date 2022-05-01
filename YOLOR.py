@@ -71,8 +71,7 @@ def detect(source = SOURCE, names = NAMES):
 
     # Get names and colors
     #names = load_classes(names)
-    colors = [[random.randint(0, 255) for _ in range(3)]
-              for _ in range(len(names))]
+    colors = [[random.randint(0, 255) for _ in range(3)] for _ in range(len(names))]
 
     # Run inference
     t0 = time.time()

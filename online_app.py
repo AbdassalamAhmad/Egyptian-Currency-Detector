@@ -157,7 +157,7 @@ if __name__ == '__main__':
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         st.image(img)
 
-    elif app_mode == "Detect currency from image":
+    elif app_mode == "Detect currency using camera":
         # Load image.
         picture = st.camera_input("Take a picture")
         if picture is not None:
