@@ -3,36 +3,30 @@ import numpy as np
 import streamlit as st
 import os
 #from gtts import gTTS
-
+import gdown
 from YOLOR import *
 
 PATH = "test_images"
 
-import gdown
-
-url = "https://drive.google.com/uc?id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe"
-output = "best_overall.pt"
-gdown.download(url, output, quiet=True)
 
 
-# @st.cache
-# def download_data():
+# url = "https://drive.google.com/uc?id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe"
+# output = "best_overall.pt"
+# gdown.download(url, output, quiet=True)
+
+
+@st.cache
+def download_data():
     
-#     path1 = './best_overall.pt'
-
+    path1 = './best_overall.pt'
     
-#     # Local
-#     # path1 = './data/LastModelResnet50_v2_16.pth.tar'
-#     # path2 = './data/resnet50_captioning.pt'
-#     # print("I am here.")
-    
-#     if not os.path.exists(path1):
-#         #decoder_url = 'wget -O ./best_overall.pt https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing'
-#         decoder_url = "wget --load-cookies /tmp/cookies.txt 'https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe' -O model/best.pt"
-#         with st.spinner('done!\nmodel weights were not found, downloading them...'):
-#             os.system(decoder_url)
-#     else:
-#         print("Model [best_overall] is here.")
+    if not os.path.exists(path1):
+        url = "https://drive.google.com/uc?id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe"
+        output = "best_overall.pt"
+        gdown.download(url, output, quiet=True)
+        st.write("Model [best_overall.pt] is being downloaded.")
+    else:
+        st.write("Model [best_overall.pt] is here.")
 
 if __name__ == '__main__':
     # Load class names.
@@ -58,7 +52,7 @@ if __name__ == '__main__':
         SOURCE = os.path.join(PATH, option)
 
         # Download the model (.pt) weights from Gdrive using wget
-        #download_data()
+        download_data()
         st.write(os.listdir("./"))
         # Use YOLOR to detect and show img.
         detect(SOURCE, names)
