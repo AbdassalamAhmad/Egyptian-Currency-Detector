@@ -4,7 +4,7 @@ import streamlit as st
 import cv2
 import torch
 from numpy import random
-
+from gtts import gTTS
 
 from utils.datasets import LoadImages
 from utils.general import non_max_suppression, apply_classifier, scale_coords
@@ -119,7 +119,12 @@ def detect(source = SOURCE, names = NAMES):
                     label = '%s %.2f' % (names[int(cls)], conf)
                     plot_one_box(xyxy, im0, label=label,
                                  color=colors[int(cls)], line_thickness=3)
-
+                    to_be_said = '%s' % (names[int(cls)])
+                    myobj = gTTS(text=to_be_said, lang='en', slow=False)
+                    myobj.save("detected_currency.mp3")
+                    audio_file = open('detected_currency.mp3', 'rb')
+                    audio_bytes = audio_file.read()
+                    st.audio(audio_bytes, format='audio/ogg', start_time=0)
             # Print time (inference + NMS)
             print('%s Done inference + NMS. (%.3fs)' % (s, t2 - t1))
 
