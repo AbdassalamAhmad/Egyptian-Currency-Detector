@@ -57,8 +57,8 @@ if __name__ == '__main__':
         # Use YOLOR to detect and show img.
         detect(SOURCE, names)
     
-    
     elif app_mode == "Detect currency using camera":
+        st.subheader("trying")
         # Load image.
         picture = st.camera_input("Take a picture")
         if picture is not None:
