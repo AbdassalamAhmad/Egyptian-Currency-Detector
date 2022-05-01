@@ -69,7 +69,7 @@ if __name__ == '__main__':
     #gdown.download(url, output, quiet=False)
     import gdown
 
-    url = "https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing"
+    url = "https://drive.google.com/uc?id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe"
     output = "fgfgfgfgfgfg.pt"
     gdown.download(url, output, quiet=True)
     #download_data()
