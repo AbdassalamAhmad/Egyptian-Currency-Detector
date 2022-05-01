@@ -125,7 +125,8 @@ def detect(source = SOURCE, names = NAMES):
 
             # Stream results
             if view_img:
-                st.image(im0)
+                im_rgb = cv2.cvtColor(im0, cv2.COLOR_BGR2RGB)
+                st.image(im_rgb)
                 #cv2.imwrite('hello.png',im0)
                 #cv2.imshow(p, im0)
                 #if cv2.waitKey(1) == ord('q'):  # q to quit
