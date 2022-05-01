@@ -69,8 +69,8 @@ if __name__ == '__main__':
     #gdown.download(url, output, quiet=False)
     import gdown
 
-    url = "https://drive.google.com/uc?id=1l_5RK28JRL19wpT22B-DY9We3TVXnnQQ"
-    output = "fcn8s_from_caffe.npz"
+    url = "https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing"
+    output = "fgfgfgfgfgfg.pt"
     gdown.download(url, output, quiet=True)
     #download_data()
     # get the size of file
@@ -79,7 +79,7 @@ if __name__ == '__main__':
     # with open('best_overall.pt') as f:
     #     lines = f.readlines()
     #     st.write(lines)
-    size = os.path.getsize('fcn8s_from_caffe.npz') 
+    size = os.path.getsize('fgfgfgfgfgfg.pt') 
     st.write('Size of file is', size, 'bytes')
     st.write(os.listdir("./"))
     # Load model
