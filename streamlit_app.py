@@ -36,7 +36,7 @@ if __name__ == '__main__':
     st.title("Egyptian Currency Detection")
     st.sidebar.title("What to do")
     app_mode = st.sidebar.selectbox("Choose the app mode",
-                                    ["Demo app", "Detect currency from image"])
+                                    ["Demo app", "Detect currency using camera"])
 
     if app_mode == "Demo app":
         st.sidebar.write(" ------ ")
