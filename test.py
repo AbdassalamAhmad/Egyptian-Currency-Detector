@@ -67,13 +67,20 @@ if __name__ == '__main__':
     #url = "https://drive.google.com/file/d/100_DOjr6dzKaYtcSCOYOUVstKOLSepKe/view?usp=sharing"
     #output = "best_overall.pt"
     #gdown.download(url, output, quiet=False)
-    download_data()
+    import gdown
+
+    url = "https://drive.google.com/uc?id=1l_5RK28JRL19wpT22B-DY9We3TVXnnQQ"
+    output = "fcn8s_from_caffe.npz"
+    gdown.download(url, output, quiet=True)
+    #download_data()
     # get the size of file
-    size = os.path.getsize('best_overall.pt') 
+    # size = os.path.getsize('best_overall.pt') 
+    # st.write('Size of file is', size, 'bytes')
+    # with open('best_overall.pt') as f:
+    #     lines = f.readlines()
+    #     st.write(lines)
+    size = os.path.getsize('fcn8s_from_caffe.npz') 
     st.write('Size of file is', size, 'bytes')
-    with open('best_overall.pt') as f:
-        lines = f.readlines()
-        st.write(lines)
     st.write(os.listdir("./"))
     # Load model
     #model = Darknet('./yolor_p6_custom.cfg', 640)
