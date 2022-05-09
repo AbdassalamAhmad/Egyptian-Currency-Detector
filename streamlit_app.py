@@ -90,7 +90,7 @@ if __name__ == '__main__':
 
             # Inference
             t1 = time_synchronized()
-            model = Darknet(CFG, IMG_SIZE)
+            model = load_model()
             #model = Darknet(cfg, imgsz).cuda()
 
             model.load_state_dict(torch.load(WEIGHTS[0], map_location='cpu')['model'])
