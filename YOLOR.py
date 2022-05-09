@@ -38,7 +38,7 @@ def load_classes(path):
     return list(filter(None, names))
 
 
-def detect(source = SOURCE, names = NAMES):
+def detect(source = SOURCE, names = NAMES, model = []):
     weights, view_img, imgsz, cfg = \
         WEIGHTS, VIEW_IMG, IMG_SIZE, CFG
 
@@ -48,7 +48,7 @@ def detect(source = SOURCE, names = NAMES):
     half = device.type != 'cpu'  # half precision only supported on CUDA
 
     # Load model
-    model = Darknet(cfg, imgsz)
+    #model = Darknet(cfg, imgsz)
     #model = Darknet(cfg, imgsz).cuda()
 
     model.load_state_dict(torch.load(weights[0], map_location=device)['model'])

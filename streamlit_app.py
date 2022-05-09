@@ -28,6 +28,12 @@ def download_data():
     else:
         st.write("Model [best_overall.pt] is here.")
 
+@st.cache
+def load_model():
+    model = Darknet(CFG, IMG_SIZE)
+    return model
+
+
 if __name__ == '__main__':
     # Load class names.
     names =load_classes(NAMES)
@@ -54,8 +60,10 @@ if __name__ == '__main__':
         # Download the model (.pt) weights from Gdrive using wget
         download_data()
         st.write(os.listdir("./"))
+        model = load_model()
+        
         # Use YOLOR to detect and show img.
-        detect(SOURCE, names)
+        detect(SOURCE, names, model)
     
     elif app_mode == "Detect currency using camera":
         st.subheader("trying")
