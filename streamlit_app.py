@@ -3,8 +3,8 @@ import numpy as np
 from numpy import random
 import streamlit as st
 import os
-import gdown
-from gtts import gTTS
+import gdown # to download model weights (.pt) file
+from gtts import gTTS #to play the sound
 
 #from YOLOR import *
 import torch
@@ -18,12 +18,10 @@ from models.models import *
 
 PATH = "test_images"
 WEIGHTS = ['./best_overall.pt'] # model.pt path[(s)]
-SOURCE = '/content/100.jpg' # file or folder to detect objects in it.
 IMG_SIZE = 640 # inference size (pixels)
 CONF_THRES = 0.4 # object confidence threshold
 IOU_THRES = 0.5 # IOU threshold for NMS (boxes near each other)
 DEVICE = 'cpu' # cuda device, i.e. 0 or 0,1,2,3 or cpu
-VIEW_IMG = True # display results (yes or no)
 CLASSES = None # filter by class: --class 0, or --class 0 2 3
 AGNOSTIC_NMS = False # class-agnostic NMS
 AUGMENT = False # augmented inference
