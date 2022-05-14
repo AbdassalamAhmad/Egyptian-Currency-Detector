@@ -66,7 +66,8 @@ if __name__ == '__main__':
         detect(SOURCE, names, model)
     
     elif app_mode == "Detect currency using camera":
-        st.subheader("trying")
+        st.subheader("After taking a picture you will get your photo with\
+         the detected currency bounding box and a sound of the banknote's name")
         # Load image.
         picture = st.camera_input("Take a picture")
         if picture is not None:
