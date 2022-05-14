@@ -6,14 +6,14 @@ import os
 import gdown # to download model weights (.pt) file
 from gtts import gTTS #to play the sound
 
-#from YOLOR import *
-import torch
 
+import torch
 from utils.datasets import letterbox
 from utils.general import non_max_suppression, scale_coords
 from utils.plots import plot_one_box
 from utils.torch_utils import select_device, time_synchronized
 from models.models import *
+
 
 
 PATH = "test_images"
