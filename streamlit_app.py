@@ -31,6 +31,10 @@ def download_data():
 @st.cache
 def load_model():
     model = Darknet(CFG, IMG_SIZE)
+    model.load_state_dict(torch.load(WEIGHTS[0], map_location=DEVICE)['model'])
+    # model = attempt_load(weights, map_location=device)  # load FP32 model
+    # imgsz = check_img_size(imgsz, s=model.stride.max())  # check img_size
+    model.to(DEVICE).eval()
     return model
 
 # Download the model (.pt) weights from Gdrive using wget
@@ -95,7 +99,7 @@ if __name__ == '__main__':
             # Inference
             t1 = time_synchronized()
             model = load_model()
-            #model = Darknet(cfg, imgsz).cuda()
+            #model = Darknet(cfg, imgsz).cuda() # when using GPU
 
             model.load_state_dict(torch.load(WEIGHTS[0], map_location='cpu')['model'])
             # model = attempt_load(weights, map_location=device)  # load FP32 model
