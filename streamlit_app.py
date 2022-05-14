@@ -33,7 +33,10 @@ def load_model():
     model = Darknet(CFG, IMG_SIZE)
     return model
 
+# Download the model (.pt) weights from Gdrive using wget
+download_data()
 
+model = load_model()
 if __name__ == '__main__':
     # Load class names.
     names =load_classes(NAMES)
@@ -58,9 +61,9 @@ if __name__ == '__main__':
         SOURCE = os.path.join(PATH, option)
 
         # Download the model (.pt) weights from Gdrive using wget
-        download_data()
+        #download_data()
         #st.write(os.listdir("./"))
-        model = load_model()
+        #model = load_model()
         
         # Use YOLOR to detect and show img.
         detect(SOURCE, names, model)
