@@ -15,7 +15,7 @@ PATH = "test_images"
 # gdown.download(url, output, quiet=True)
 
 
-@st.cache
+#@st.cache
 def download_data():
     
     path1 = './best_overall.pt'
@@ -28,7 +28,7 @@ def download_data():
     #else:
         #st.write("Model [best_overall.pt] is here.")
 
-@st.cache
+#@st.cache
 def load_model():
     model = Darknet(CFG, IMG_SIZE)
     model.load_state_dict(torch.load(WEIGHTS[0], map_location=DEVICE)['model'])
