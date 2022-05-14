@@ -59,7 +59,7 @@ if __name__ == '__main__':
 
         # Download the model (.pt) weights from Gdrive using wget
         download_data()
-        st.write(os.listdir("./"))
+        #st.write(os.listdir("./"))
         model = load_model()
         
         # Use YOLOR to detect and show img.

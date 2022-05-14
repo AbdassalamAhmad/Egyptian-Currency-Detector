@@ -45,7 +45,7 @@ def detect(source = SOURCE, names = NAMES, model = []):
     # Initialize
     device = select_device(DEVICE)
 
-    half = device.type != 'cpu'  # half precision only supported on CUDA
+    #half = device.type != 'cpu'  # half precision only supported on CUDA
 
     # Load model
     #model = Darknet(cfg, imgsz)
@@ -55,8 +55,8 @@ def detect(source = SOURCE, names = NAMES, model = []):
     # model = attempt_load(weights, map_location=device)  # load FP32 model
     # imgsz = check_img_size(imgsz, s=model.stride.max())  # check img_size
     model.to(device).eval()
-    if half:
-        model.half()  # to FP16
+    #if half:
+        #model.half()  # to FP16
 
     # Second-stage classifier
     # classify = False
@@ -77,10 +77,11 @@ def detect(source = SOURCE, names = NAMES, model = []):
     t0 = time.time()
     img = torch.zeros((1, 3, imgsz, imgsz), device=device)  # init img
     # run once
-    _ = model(img.half() if half else img) if device.type != 'cpu' else None
+    #_ = model(img.half() if half else img) if device.type != 'cpu' else None
     for path, img, im0s, vid_cap in dataset:
         img = torch.from_numpy(img).to(device)
-        img = img.half() if half else img.float()  # uint8 to fp16/32
+        #img = img.half() if half else img.float()  # uint8 to fp16/32
+        img = img.float()
         img /= 255.0  # 0 - 255 to 0.0 - 1.0
         if img.ndimension() == 3:
             img = img.unsqueeze(0)
