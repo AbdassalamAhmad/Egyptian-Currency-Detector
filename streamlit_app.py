@@ -36,14 +36,14 @@ def load_model():
     return model
 
 # Download the model (.pt) weights from Gdrive using wget
-download_data()
 
-model = load_model()
 if __name__ == '__main__':
     # Load class names.
     names =load_classes(NAMES)
     print (names)
-   
+    download_data()
+
+    model = load_model()
     st.title("Egyptian Currency Detection")
     st.sidebar.title("What to do")
     app_mode = st.sidebar.selectbox("Choose the app mode",
