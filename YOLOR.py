@@ -1,5 +1,4 @@
 import time
-from pathlib import Path
 import streamlit as st
 import cv2
 import torch
@@ -7,13 +6,13 @@ from numpy import random
 from gtts import gTTS
 
 from utils.datasets import LoadImages
-from utils.general import non_max_suppression, apply_classifier, scale_coords
+from utils.general import non_max_suppression, scale_coords
 from utils.plots import plot_one_box
-from utils.torch_utils import select_device, load_classifier, time_synchronized
+from utils.torch_utils import select_device, time_synchronized
 
 from models.models import *
-from utils.datasets import *
-from utils.general import *
+#from utils.datasets import *
+#from utils.general import *
 
 WEIGHTS = ['./best_overall.pt'] # model.pt path[(s)]
 SOURCE = '/content/100.jpg' # file or folder to detect objects in it.
@@ -45,26 +44,10 @@ def detect(source = SOURCE, names = NAMES, model = []):
     # Initialize
     device = select_device(DEVICE)
 
-    #half = device.type != 'cpu'  # half precision only supported on CUDA
-
     # Load model
     #model = Darknet(cfg, imgsz)
-    #model = Darknet(cfg, imgsz).cuda()
 
-    #model.load_state_dict(torch.load(weights[0], map_location=device)['model'])
-    # model = attempt_load(weights, map_location=device)  # load FP32 model
-    # imgsz = check_img_size(imgsz, s=model.stride.max())  # check img_size
-    #model.to(device).eval()
-    #if half:
-        #model.half()  # to FP16
 
-    # Second-stage classifier
-    # classify = False
-    # if classify:
-    #     modelc = load_classifier(name='resnet101', n=2)  # initialize
-    #     modelc.load_state_dict(torch.load(
-    #         'weights/resnet101.pt', map_location=device)['model'])  # load weights
-    #     modelc.to(device).eval()
 
     # Set Dataloader
     dataset = LoadImages(source, img_size=imgsz, auto_size=64)
@@ -95,9 +78,6 @@ def detect(source = SOURCE, names = NAMES, model = []):
             pred, CONF_THRES, IOU_THRES, classes=CLASSES, agnostic=AGNOSTIC_NMS)
         t2 = time_synchronized()
 
-        # Apply Classifier
-        # if classify:
-        #     pred = apply_classifier(pred, modelc, img, im0s)
 
         # Process detections
         for ___, det in enumerate(pred):  # detections per image
@@ -140,6 +120,6 @@ def detect(source = SOURCE, names = NAMES, model = []):
     print('Done ALL. (%.3fs)' % (time.time() - t0))
 
 
-if __name__ == '__main__':
-    with torch.no_grad():
-        detect()
+# if __name__ == '__main__':
+#     with torch.no_grad():
+#         detect()
