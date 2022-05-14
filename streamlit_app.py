@@ -24,9 +24,9 @@ def download_data():
         url = "https://drive.google.com/uc?id=100_DOjr6dzKaYtcSCOYOUVstKOLSepKe"
         output = "best_overall.pt"
         gdown.download(url, output, quiet=True)
-        st.write("Model [best_overall.pt] is being downloaded.")
-    else:
-        st.write("Model [best_overall.pt] is here.")
+        #st.write("Model [best_overall.pt] is being downloaded.")
+    #else:
+        #st.write("Model [best_overall.pt] is here.")
 
 @st.cache
 def load_model():
