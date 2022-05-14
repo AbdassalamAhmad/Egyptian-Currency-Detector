@@ -59,12 +59,12 @@ def detect(source = SOURCE, names = NAMES, model = []):
         model.half()  # to FP16
 
     # Second-stage classifier
-    classify = False
-    if classify:
-        modelc = load_classifier(name='resnet101', n=2)  # initialize
-        modelc.load_state_dict(torch.load(
-            'weights/resnet101.pt', map_location=device)['model'])  # load weights
-        modelc.to(device).eval()
+    # classify = False
+    # if classify:
+    #     modelc = load_classifier(name='resnet101', n=2)  # initialize
+    #     modelc.load_state_dict(torch.load(
+    #         'weights/resnet101.pt', map_location=device)['model'])  # load weights
+    #     modelc.to(device).eval()
 
     # Set Dataloader
     dataset = LoadImages(source, img_size=imgsz, auto_size=64)
@@ -95,8 +95,8 @@ def detect(source = SOURCE, names = NAMES, model = []):
         t2 = time_synchronized()
 
         # Apply Classifier
-        if classify:
-            pred = apply_classifier(pred, modelc, img, im0s)
+        # if classify:
+        #     pred = apply_classifier(pred, modelc, img, im0s)
 
         # Process detections
         for ___, det in enumerate(pred):  # detections per image
